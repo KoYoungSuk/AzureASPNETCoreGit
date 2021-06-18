@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ManageContext"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "LoginContext"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "MsSQLConnection"
+    }
+  }
+}

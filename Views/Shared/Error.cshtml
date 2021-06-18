@@ -1,0 +1,22 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+<p><a href="#" onclick="history.go(-1)">Back</a></p>
+<p><a asp-action="Index">Back to Main Page</a></p>
+<div class="vercheck">
+    <p id="address"> </p>
+    <p id="osver"></p>
+    <p id="browserver"></p>
+    <p id="time"></p>
+</div>

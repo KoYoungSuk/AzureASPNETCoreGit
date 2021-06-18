@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Product Management System with Azure(로그인 화면)";
+    var id = @Context.Session.GetString("id");
+}
+
+@if(id == "admin")
+{ 
+  <script>
+      window.location.href = 'manageproduct_table/Manage';
+  </script>
+}
+else 
+{
+  <div class="text-center">
+      <h1 class="display-4">Product Management System</h1>
+      <h5>물품관리시스템은 관리자 모드로만 사용이 가능합니다. 로그인을 해주세요.</h5>
+      <h5>만약 처음 사용하는 것이라면 회원가입을 해주시길 바랍니다.</h5>
+      <form method="post" asp-controller="Home" asp-action="Login">
+          <table>
+              <tr>
+                  <td><label for="ID:" class="control-label">ID:</label></td>
+                  <td>
+                      <input type="text" name="id" class="form-control" />
+                  </td>
+                  <td>
+                      <input type="submit" value="로그인" class="btn btn-primary" />
+                  </td>
+              </tr>
+              <tr>
+                  <td><label for="Password:" class="control-label">비밀번호:</label></td>
+                  <td>
+                      <input type="password" name="password" class="form-control" />
+                  </td>
+                  <td>
+                      <input type="button" value="회원가입" class="btn btn-primary" onclick='location.href="/Home/Signup_Page"' />
+                  </td>
+              </tr>
+          </table>
+      </form>
+      <div class="errormessage">
+          @ViewBag.error
+      </div>
+  </div>
+}
+
+

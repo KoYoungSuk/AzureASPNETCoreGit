@@ -1,0 +1,31 @@
+﻿
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "회원정보 변경 페이지";
+    var id = @Context.Session.GetString("id");
+    
+}
+<h1>비밀번호 변경</h1>
+
+@if (id == "admin")
+{
+    <form method="post" asp-controller="Home" asp-action="ChangePassword">
+        <table>
+            <tr>
+                <td><label for="New Password" class="control-label">New Password:</label></td>
+                <td><input type="password" name="password" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="비밀번호 변경" class="btn btn-primary" /></td>
+                <td><input type="button" onclick='location.href="/manageproduct_table/Manage"' value="물품 리스트로 돌아가기" class="btn btn-primary" /></td>
+                <td><input type="button" onclick="history.go(-1);" value="뒤로가기" class="btn btn-primary" /></td>
+            </tr>
+        </table>
+    </form>
+}
+else
+{
+    <h5>로그인을 해주세요. 관리자 모드로만 사용이 가능합니다.</h5>
+    <a asp-controller="Home" asp-action="Login">로그인</a>
+    <a href="#" onclick="history.go(-1)">뒤로가기</a>
+}

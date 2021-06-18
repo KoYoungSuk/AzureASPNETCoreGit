@@ -1,0 +1,76 @@
+﻿@model AzureWebApplication.Models.manageproduct_table
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = @Context.Session.GetString("id");
+}
+
+<h1>물품 정보 수정</h1>
+
+@if (id == "admin")
+{
+    <hr />
+    <form asp-controller="manageproduct_table" asp-action="Edit">
+        <input type="hidden" asp-for="product_no" />
+        <dl class="row">
+            <dt class="col-sm-2">
+                물품 이름:
+            </dt>
+            <dd class="col-sm-10">
+                <input type="text" name="product_name" value="@Html.DisplayFor(model => model.product_name)" />
+            </dd>
+            <dt class="col-sm-2">
+                물품 형태:
+            </dt>
+            <dd class="col-sm-10">
+                <input type="text" name="product_type" value="@Html.DisplayFor(model => model.product_type)" />
+            </dd>
+            <dt class="col-sm-2">
+                제조 날짜:
+            </dt>
+            <dd class="col-sm-10">
+                <input type="text" name="manufacture_date" id="manufacture_date" value="@Html.DisplayFor(model => model.manufacture_date)" />
+            </dd>
+            <dt class="col-sm-2">
+                납품 날짜:
+            </dt>
+            <dd class="col-sm-10">
+                <input type="text" name="buy_date" value="@Html.DisplayFor(model => model.buy_date)" />
+            </dd>
+            <dt class="col-sm-2">
+                유통 기한:
+            </dt>
+            <dd class="col-sm-10">
+                <input type="text" name="expired_date" id="expired_date" value="@Html.DisplayFor(model => model.expired_date)" />
+            </dd>
+            <dt class="col-sm-2">
+                수량:
+            </dt>
+            <dd class="col-sm-10">
+                <input type="text" name="product_amount" value="@Html.DisplayFor(model => model.product_amount)" />
+            </dd>
+            <dt class="col-sm-2">
+                가격:
+            </dt>
+            <dd class="col-sm-10">
+                <input type="text" name="price" value="@Html.DisplayFor(model => model.price)" />
+            </dd>
+        </dl>
+        <input type="submit" value="저장" class="btn btn-primary" />
+        <br />
+        <a asp-controller="manageproduct_table" asp-action="Manage">리스트로 돌아가기</a>|
+        <a href = "#" onclick = "history.go(-1)" > 뒤로가기 </a>|
+        <a asp-controller = "Home" asp - action = "Logout" > 로그아웃 </a>
+</form>
+}
+else
+{
+<h5>로그인을 해주세요. 관리자 모드로만 사용이 가능합니다.</h5>
+<a asp-controller="Home" asp-action="Login">로그인</a>
+<a href="#" onclick="history.go(-1)">뒤로가기</a>
+
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

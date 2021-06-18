@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "회원가입 페이지";
+}
+<h1>회원가입 페이지</h1>
+<h5>유의사항: 이미 회원가입이 되어있다면 회원가입이 불가능합니다. 로그인 이후 정보를 변경해주세요.</h5>
+<h6>아이디는 기본적으로 admin로 설정됩니다.</h6>>
+<form method="post" asp-controller="Home" asp-action="Signup">
+    <table>
+        <tr>
+            <td><label for="Password" class="control-label">비밀번호:</label></td>
+            <td><input type="password" name="password" class="form-control" /></td>
+            <td><input type="submit" value="회원가입" class="btn btn-primary" /></td>
+            <td><input type="button" onclick="history.go(-1);" value="뒤로가기" class="btn btn-primary" /></td>
+        </tr>
+    </table>
+</form>

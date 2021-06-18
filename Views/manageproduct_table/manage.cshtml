@@ -1,0 +1,92 @@
+﻿@model IEnumerable<AzureWebApplication.Models.manageproduct_table>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Manage Product List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id = @Context.Session.GetString("id");
+}
+<h1>@ViewData["Title"]</h1>
+<hr />
+@if (id == "admin")
+{
+    <p>
+        <a asp-controller="manageproduct_table" asp-action="Create">새로운 물품 리스트 추가</a>|
+        <a asp-controller="Home" asp-action="Logout">로그아웃</a>|
+        <a asp-controller="Home" asp-action="ChangePW_Page">비밀번호 변경</a>|
+        <a href="#" onclick="window.print()">인쇄</a>
+    </p>
+    <div id="printdiv">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    물품 번호
+                </th>
+                <th>
+                    물품 이름
+                </th>
+                <th>
+                    물품 형태
+                </th>
+                <th>
+                    제조 날짜
+                </th>
+                <th>
+                    유통 기한(식품에만 해당)
+                </th>
+                <th>
+                    수량
+                </th>
+                <th>
+                    납품받은 날짜
+                </th>
+                <th>
+                    가격
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.product_no)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.manufacture_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.expired_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelltem => item.buy_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelltem => item.price)
+                    </td>
+                    <td>
+                        <a asp-controller="manageproduct_table" asp-action="Edit" asp-route-id="@item.product_no">수정</a> |
+                        <a asp-controller="manageproduct_table" asp-action="Details" asp-route-id="@item.product_no">세부 정보</a> |
+                        <a asp-controller="manageproduct_table" asp-action="Delete" asp-route-id="@item.product_no">삭제</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+}
+else
+{
+    <h5>로그인을 해주세요. 관리자 모드로만 사용이 가능합니다.</h5>
+    <a asp-controller="Home" asp-action="Login">로그인</a>
+    <a href="#" onclick="history.go(-1)">뒤로가기</a>
+}

@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/kyssqlserver/databases/KYSSQLDatabase",
+      "type": "mssql.azure",
+      "connectionId": "ManageContext",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/kyssqlserver/databases/KYSSQLDatabase",
+      "type": "mssql.azure",
+      "connectionId": "LoginContext",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql3": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/kyssqlserver/databases/KYSSQLDatabase",
+      "type": "mssql.azure",
+      "connectionId": "MsSQLConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

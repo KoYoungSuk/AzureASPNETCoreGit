@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "ManageContext"
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/kyssqlserver/databases/KYSSQLDatabase",
+      "type": "mssql.azure",
+      "connectionId": "LoginContext",
+      "secretStore": "LocalSecretsFile"
+    },
+    "mssql3": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/kyssqlserver/databases/KYSSQLDatabase",
+      "type": "mssql.azure",
+      "connectionId": "MsSQLConnection",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}
